@@ -3,16 +3,6 @@ import 'dart:io';
 import 'dart:convert';
 
 class SavedData {
-  static Map dataSet = {
-    'summary': summaryData,
-    'zodiac': zodiacData,
-    'anima': animaData,
-    'eurekan': eurekanData,
-    'resistance': resistanceData,
-    'manderville': mandervilleData,
-  };
-
-  static Map summaryData = {};
   static Map zodiacData = {};
   static Map animaData = {};
   static Map eurekanData = {};
@@ -20,32 +10,117 @@ class SavedData {
   static Map mandervilleData = {};
 
   static Map newDataSet = {
-    'summary': {
-      'pld': List.filled(29, false),
-      'war': List.filled(29, false),
-      'drk': [...List.filled(8, 'N/A'), ...List.filled(21, false)],
-      'gnb': [...List.filled(22, 'N/A'), ...List.filled(7, false)],
-      'drg': List.filled(29, false),
-      'mnk': List.filled(29, false),
-      'nin': List.filled(29, false),
-      'sam': [...List.filled(16, 'N/A'), ...List.filled(13, false)],
-      'rpr': [...List.filled(28, 'N/A'), ...List.filled(1, false)],
-      'brd': List.filled(29, false),
-      'mch': List.filled(29, false),
-      'dnc': [...List.filled(22, 'N/A'), ...List.filled(7, false)],
-      'blm': List.filled(29, false),
-      'smn': List.filled(29, false),
-      'rdm': [...List.filled(16, 'N/A'), ...List.filled(13, false)],
-      'whm': List.filled(29, false),
-      'sch': List.filled(29, false),
-      'ast': [...List.filled(8, 'N/A'), ...List.filled(21, false)],
-      'sge': [...List.filled(28, 'N/A'), ...List.filled(1, false)],
+    'zodiac': {
+      'summary': {
+        'pld': List.filled(8, false),
+        'war': List.filled(8, false),
+        'drg': List.filled(8, false),
+        'mnk': List.filled(8, false),
+        'nin': List.filled(8, false),
+        'brd': List.filled(8, false),
+        'mch': List.filled(8, false),
+        'blm': List.filled(8, false),
+        'smn': List.filled(8, false),
+        'whm': List.filled(8, false),
+        'sch': List.filled(8, false),
+      },
+      'zenith': {'mist': 0},
+      'atma': {
+        'lion': 0,
+        'water': 0,
+        'ram': 0,
+        'crab': 0,
+        'fish': 0,
+        'bull': 0,
+        'scales': 0,
+        'twins': 0,
+        'scorpion': 0,
+        'archer': 0,
+        'goat': 0,
+        'maiden': 0
+      },
+      'novus': {'ink': 0, 'alexandrite': 0},
     },
-    'zodiac': '',
-    'anima': '',
-    'eurekan': '',
-    'resistance': '',
-    'manderville': ''
+    'anima': {
+      'summary': {
+        'pld': List.filled(8, false),
+        'war': List.filled(8, false),
+        'drk': List.filled(8, false),
+        'drg': List.filled(8, false),
+        'mnk': List.filled(8, false),
+        'nin': List.filled(8, false),
+        'brd': List.filled(8, false),
+        'mch': List.filled(8, false),
+        'blm': List.filled(8, false),
+        'smn': List.filled(8, false),
+        'whm': List.filled(8, false),
+        'sch': List.filled(8, false),
+        'ast': List.filled(8, false),
+      },
+    },
+    'eurekan': {
+      'summary': {
+        'pld': List.filled(6, false),
+        'war': List.filled(6, false),
+        'drk': List.filled(6, false),
+        'drg': List.filled(6, false),
+        'mnk': List.filled(6, false),
+        'nin': List.filled(6, false),
+        'sam': List.filled(6, false),
+        'brd': List.filled(6, false),
+        'mch': List.filled(6, false),
+        'blm': List.filled(6, false),
+        'smn': List.filled(6, false),
+        'rdm': List.filled(6, false),
+        'whm': List.filled(6, false),
+        'sch': List.filled(6, false),
+        'ast': List.filled(6, false),
+      },
+    },
+    'resistance': {
+      'summary': {
+        'pld': List.filled(6, false),
+        'war': List.filled(6, false),
+        'drk': List.filled(6, false),
+        'gnb': List.filled(6, false),
+        'drg': List.filled(6, false),
+        'mnk': List.filled(6, false),
+        'nin': List.filled(6, false),
+        'sam': List.filled(6, false),
+        'brd': List.filled(6, false),
+        'mch': List.filled(6, false),
+        'dnc': List.filled(6, false),
+        'blm': List.filled(6, false),
+        'smn': List.filled(6, false),
+        'rdm': List.filled(6, false),
+        'whm': List.filled(6, false),
+        'sch': List.filled(6, false),
+        'ast': List.filled(6, false),
+      },
+    },
+    'manderville': {
+      'summary': {
+        'pld': List.filled(1, false),
+        'war': List.filled(1, false),
+        'drk': List.filled(1, false),
+        'gnb': List.filled(1, false),
+        'drg': List.filled(1, false),
+        'mnk': List.filled(1, false),
+        'nin': List.filled(1, false),
+        'sam': List.filled(1, false),
+        'rpr': List.filled(1, false),
+        'brd': List.filled(1, false),
+        'mch': List.filled(1, false),
+        'dnc': List.filled(1, false),
+        'blm': List.filled(1, false),
+        'smn': List.filled(1, false),
+        'rdm': List.filled(1, false),
+        'whm': List.filled(1, false),
+        'sch': List.filled(1, false),
+        'ast': List.filled(1, false),
+        'sge': List.filled(1, false),
+      },
+    },
   };
 
   getStorageDir() async {
@@ -64,10 +139,14 @@ class SavedData {
     return file;
   }
 
-  initSummaryData() async {
+  initAllData() async {
+    // TODO: Remove once app is ready, not needed outside of testing
     final file = await initLocalStorage();
-    summaryData = json.decode(await file.readAsString())['summary'];
-    return summaryData;
+    zodiacData = json.decode(await file.readAsString())['zodiac'];
+    animaData = json.decode(await file.readAsString())['anima'];
+    eurekanData = json.decode(await file.readAsString())['eurekan'];
+    resistanceData = json.decode(await file.readAsString())['resistance'];
+    mandervilleData = json.decode(await file.readAsString())['manderville'];
   }
 
   initZodiacData() async {
@@ -103,6 +182,20 @@ class SavedData {
   updateLocalStorage() async {
     final file = await getStorageDir();
 
+    final Map dataSet = {
+      'zodiac': zodiacData,
+      'anima': animaData,
+      'eurekan': eurekanData,
+      'resistance': resistanceData,
+      'manderville': mandervilleData,
+    };
+
     file.writeAsString(json.encode(dataSet));
+  }
+
+  updateBaseFile() async {
+    final file = await getStorageDir();
+
+    file.writeAsString(json.encode(newDataSet));
   }
 }
