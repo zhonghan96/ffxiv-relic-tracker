@@ -82,7 +82,7 @@ class ZodiacStep extends StatelessWidget {
                     ImageSpan(Image.asset('assets/images/quest_icon.png').image,
                         imageWidth: 20, imageHeight: 20),
                     TextSpan(
-                        text: 'A Relic Reborn',
+                        text: ' A Relic Reborn',
                         style: TextFormating.hyperlink,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
@@ -244,23 +244,29 @@ class _ZenithTableState extends State<ZenithTable> {
             ),
           ),
           Text(
-            ZenithCal().calNeededMist().toString(),
+            ZodiacInfo().calNeededBase(ZenithCal.mistForEach, 1).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['zenith']['mist'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['zenith']['mist'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              thavnarianMistNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['zenith']['mist'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['zenith']['mist'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                thavnarianMistNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: thavnarianMistNotifier._notifier,
@@ -407,29 +413,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_lion_icon1.png',
+              'assets/images/Atma_of_the_lion_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['lion'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['lion'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              lionNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['lion'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['lion'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                lionNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: lionNotifier._notifier,
@@ -462,29 +474,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_water-bearer_icon1.png',
+              'assets/images/Atma_of_the_water-bearer_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['water'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['water'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              waterNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['water'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['water'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                waterNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: waterNotifier._notifier,
@@ -517,29 +535,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_ram_icon1.png',
+              'assets/images/Atma_of_the_ram_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['ram'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['ram'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              ramNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['ram'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['ram'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                ramNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: ramNotifier._notifier,
@@ -572,29 +596,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_crab_icon1.png',
+              'assets/images/Atma_of_the_crab_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['crab'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['crab'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              crabNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['crab'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['crab'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                crabNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: crabNotifier._notifier,
@@ -627,29 +657,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_fish_icon1.png',
+              'assets/images/Atma_of_the_fish_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['fish'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['fish'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              fishNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['fish'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['fish'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                fishNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: fishNotifier._notifier,
@@ -682,29 +718,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_bull_icon1.png',
+              'assets/images/Atma_of_the_bull_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['bull'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['bull'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              bullNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['bull'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['bull'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                bullNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: bullNotifier._notifier,
@@ -737,29 +779,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_scales_icon1.png',
+              'assets/images/Atma_of_the_scales_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['scales'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['scales'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              scalesNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['scales'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['scales'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                scalesNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: scalesNotifier._notifier,
@@ -792,29 +840,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_twins_icon1.png',
+              'assets/images/Atma_of_the_twins_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['twins'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['twins'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              twinsNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['twins'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['twins'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                twinsNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: twinsNotifier._notifier,
@@ -847,29 +901,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_scorpion_icon1.png',
+              'assets/images/Atma_of_the_scorpion_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['scorpion'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['scorpion'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              scorpionNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['scorpion'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['scorpion'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                scorpionNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: scorpionNotifier._notifier,
@@ -902,29 +962,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_archer_icon1.png',
+              'assets/images/Atma_of_the_archer_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['archer'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['archer'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              archerNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['archer'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['archer'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                archerNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: archerNotifier._notifier,
@@ -957,29 +1023,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_goat_icon1.png',
+              'assets/images/Atma_of_the_goat_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['goat'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['goat'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              goatNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['goat'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['goat'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                goatNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: goatNotifier._notifier,
@@ -1012,29 +1084,35 @@ class _AtmaTableState extends State<AtmaTable> {
                   style: TextFormating.widgetContent)
             ]),
             child: Image.asset(
-              'assets/images/20px-Atma_of_the_maiden_icon1.png',
+              'assets/images/Atma_of_the_maiden_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            AtmaCal().calNeededAtma().toString(),
+            ZodiacInfo().calNeededBase(AtmaCal.itemsForEach, 2).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['atma']['maiden'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['atma']['maiden'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              maidenNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['atma']['maiden'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['atma']['maiden'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                maidenNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: maidenNotifier._notifier,
@@ -1098,8 +1176,7 @@ class AnimusStep extends StatelessWidget {
                         text: 'Upgraded from an Atma Weapon by completing 9 ',
                         style: TextFormating.widgetContent),
                     ImageSpan(
-                        Image.asset(
-                                'assets/images/20px-Book_of_skylight_icon1.png')
+                        Image.asset('assets/images/Book_of_skylight_icon1.png')
                             .image,
                         imageWidth: 20,
                         imageHeight: 20),
@@ -1190,7 +1267,7 @@ class NovusStep extends StatelessWidget {
                         ),
                         ImageSpan(
                             Image.asset(
-                                    'assets/images/20px-Superior_enchanted_ink_icon1.png')
+                                    'assets/images/Superior_enchanted_ink_icon1.png')
                                 .image,
                             imageWidth: 20,
                             imageHeight: 20),
@@ -1205,8 +1282,7 @@ class NovusStep extends StatelessWidget {
                           style: TextFormating.widgetContent,
                         ),
                         ImageSpan(
-                            Image.asset(
-                                    'assets/images/20px-Alexandrite_icon1.png')
+                            Image.asset('assets/images/Alexandrite_icon1.png')
                                 .image,
                             imageWidth: 20,
                             imageHeight: 20),
@@ -1299,29 +1375,35 @@ class _NovusTableState extends State<NovusTable> {
               )
             ]),
             child: Image.asset(
-              'assets/images/20px-Superior_enchanted_ink_icon1.png',
+              'assets/images/Superior_enchanted_ink_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            NovusCal().calNeededInk().toString(),
+            ZodiacInfo().calNeededBase(NovusCal.inkForEach, 4).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue: SavedData.zodiacData['novus']['ink'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['novus']['ink'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              inkNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.zodiacData['novus']['ink'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['novus']['ink'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                inkNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: inkNotifier._notifier,
@@ -1377,30 +1459,36 @@ class _NovusTableState extends State<NovusTable> {
                       .copyWith(fontWeight: FontWeight.w600)),
             ]),
             child: Image.asset(
-              'assets/images/20px-Alexandrite_icon1.png',
+              'assets/images/Alexandrite_icon1.png',
               height: 30,
               width: 30,
             ),
           ),
           Text(
-            NovusCal().calNeededAlex().toString(),
+            ZodiacInfo().calNeededBase(NovusCal.alexForEach, 4).toString(),
             style: TextFormating.widgetContent,
             textAlign: TextAlign.center,
           ),
-          TextFormField(
-            initialValue:
-                SavedData.zodiacData['novus']['alexandrite'].toString(),
-            textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: TextInputType.number,
-            onChanged: (input) {
-              if (input == '') {
-                input = '0';
-              }
-              SavedData.zodiacData['novus']['alexandrite'] = int.parse(input);
-              SavedData().updateLocalStorage();
-              alexNotifier.updateNotiferValue();
-            },
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.zodiacData['novus']['alexandrite'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.zodiacData['novus']['alexandrite'] = int.parse(input);
+                SavedData().updateLocalStorage();
+                alexNotifier.updateNotiferValue();
+              },
+            ),
           ),
           ValueListenableBuilder(
               valueListenable: alexNotifier._notifier,
@@ -1532,7 +1620,7 @@ class BravesStep extends StatelessWidget {
                     TextSpan(text: '- ', style: TextFormating.widgetContent),
                     ImageSpan(
                         Image.asset(
-                                'assets/images/20px-Repeatablefeaturequest.png')
+                                'assets/images/40px-Repeatablefeaturequest.png')
                             .image,
                         imageWidth: 20,
                         imageHeight: 20),
@@ -1547,7 +1635,7 @@ class BravesStep extends StatelessWidget {
                     TextSpan(text: '- ', style: TextFormating.widgetContent),
                     ImageSpan(
                         Image.asset(
-                                'assets/images/20px-Repeatablefeaturequest.png')
+                                'assets/images/40px-Repeatablefeaturequest.png')
                             .image,
                         imageWidth: 20,
                         imageHeight: 20),
@@ -1562,7 +1650,7 @@ class BravesStep extends StatelessWidget {
                     TextSpan(text: '- ', style: TextFormating.widgetContent),
                     ImageSpan(
                         Image.asset(
-                                'assets/images/20px-Repeatablefeaturequest.png')
+                                'assets/images/40px-Repeatablefeaturequest.png')
                             .image,
                         imageWidth: 20,
                         imageHeight: 20),
@@ -1577,7 +1665,7 @@ class BravesStep extends StatelessWidget {
                     TextSpan(text: '- ', style: TextFormating.widgetContent),
                     ImageSpan(
                         Image.asset(
-                                'assets/images/20px-Repeatablefeaturequest.png')
+                                'assets/images/40px-Repeatablefeaturequest.png')
                             .image,
                         imageWidth: 20,
                         imageHeight: 20),

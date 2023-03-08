@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '/Utility/config.dart';
 import '/Utility/zodiac_helper.dart';
+import '/Utility/anima_helper.dart';
 
 class SummaryPage extends StatelessWidget {
   const SummaryPage({super.key});
@@ -264,7 +265,7 @@ cardTable(relicCategory) {
                               TableCellVerticalAlignment.middle,
                           children: [
                             TableRow(
-                                children: StaticLists.animaSteps
+                                children: AnimaInfo.animaSteps
                                     .map((e) => Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 5),

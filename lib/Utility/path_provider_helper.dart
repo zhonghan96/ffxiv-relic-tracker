@@ -57,6 +57,22 @@ class SavedData {
         'sch': List.filled(8, false),
         'ast': List.filled(8, false),
       },
+      'animated': {'astral': 0, 'umbral': 0},
+      'anima': {
+        'bone': 0,
+        'shell': 0,
+        'ore': 0,
+        'seeds': 0,
+        'adamantite': 0,
+        'titanium': 0,
+        'arrow': 0,
+        'kingcake': 0
+      },
+      'hyperconductive': {'aetherOil': 0},
+      'reconditioned': {'umbrite': 0, 'crystalSand': 0},
+      'sharpened': {'clusters': 0},
+      'complete': {'pneumite': 0},
+      'lux': {'ink': 0}
     },
     'eurekan': {
       'summary': {

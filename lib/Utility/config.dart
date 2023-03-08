@@ -66,17 +66,6 @@ class StaticLists {
     'SGE'
   ];
 
-  static List animaSteps = [
-    'Animated',
-    'Awoken',
-    'Animated',
-    'Hyperconductive',
-    'Reconditioned',
-    'Sharpened',
-    'Completed',
-    'Lux'
-  ];
-
   static List eurekanSteps = [
     'Antiquated',
     'Anemos',
