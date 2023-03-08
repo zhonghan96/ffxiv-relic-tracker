@@ -1,16 +1,11 @@
-# ffxiv_relic_tracker
+# Final Fantasy 14 Relic Weapon Tracker
 
-A new Flutter project.
+This is a mobile application meant to provide FFXIV players a convenient tracker to keep track of their progress in their journey to obtain the various Relic Weapons in FFXIV. It keep tabs on not just what materials you need and how much are still required, but it also has an overall tracker to keep tabs on your aquisition progress on all weapons.
 
-## Getting Started
+This app also contains succinct information on all Relic Weapon steps so players can use it as a quick guide on what needs to be done.
 
-This project is a starting point for a Flutter application.
+## Disclaimer
 
-A few resources to get you started if this is your first Flutter project:
+This app is merely a consolidation of information and materials from various sources into a comprehensive tool. I do not own any of the information nor artwork within the app, all credits go to their original creators and contributors.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+All information is obtained from `https://ffxiv.consolegameswiki.com/wiki`
