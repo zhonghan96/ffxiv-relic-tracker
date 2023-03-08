@@ -66,6 +66,25 @@ flutter:
     - assets/images/quest_icon.png
     - assets/images/thavnairian_mist.png
     - assets/images/Allagan_Tomestone_of_Poetics.png
+    - assets/images/20px-Atma_of_the_archer_icon1.png
+    - assets/images/20px-Atma_of_the_bull_icon1.png
+    - assets/images/20px-Atma_of_the_crab_icon1.png
+    - assets/images/20px-Atma_of_the_fish_icon1.png
+    - assets/images/20px-Atma_of_the_goat_icon1.png
+    - assets/images/20px-Atma_of_the_lion_icon1.png
+    - assets/images/20px-Atma_of_the_maiden_icon1.png
+    - assets/images/20px-Atma_of_the_ram_icon1.png
+    - assets/images/20px-Atma_of_the_scales_icon1.png
+    - assets/images/20px-Atma_of_the_scorpion_icon1.png
+    - assets/images/20px-Atma_of_the_twins_icon1.png
+    - assets/images/20px-Atma_of_the_water-bearer_icon1.png
+    - assets/images/20px-Book_of_skylight_icon1.png
+    - assets/images/20px-Superior_enchanted_ink_icon1.png
+    - assets/images/20px-Alexandrite_icon1.png
+    - assets/images/20px-Allied_Seal.png
+    - assets/images/Mysterious_map_icon1.png
+    - assets/images/Fate_mob_icon1.png
+    - assets/images/20px-Repeatablefeaturequest.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

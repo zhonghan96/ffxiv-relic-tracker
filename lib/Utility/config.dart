@@ -66,17 +66,6 @@ class StaticLists {
     'SGE'
   ];
 
-  static List zodiacSteps = [
-    'Zodiac',
-    'Zenith',
-    'Atma',
-    'Animus',
-    'Novus',
-    'Nexus',
-    'Braves',
-    'Zeta'
-  ];
-
   static List animaSteps = [
     'Animated',
     'Awoken',

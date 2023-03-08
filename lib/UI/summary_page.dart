@@ -1,6 +1,8 @@
 import 'package:ffxiv_relic_tracker/Utility/path_provider_helper.dart';
 import 'package:flutter/material.dart';
+
 import '/Utility/config.dart';
+import '/Utility/zodiac_helper.dart';
 
 class SummaryPage extends StatelessWidget {
   const SummaryPage({super.key});
@@ -233,7 +235,7 @@ cardTable(relicCategory) {
                           TableCellVerticalAlignment.middle,
                       children: [
                         TableRow(
-                            children: StaticLists.zodiacSteps
+                            children: ZodiacInfo.zodiacSteps
                                 .map((e) => Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 5),

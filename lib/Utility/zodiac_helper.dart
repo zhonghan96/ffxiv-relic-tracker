@@ -1,5 +1,34 @@
 import 'path_provider_helper.dart';
 
+class ZodiacInfo {
+  static List zodiacSteps = [
+    'Zodiac',
+    'Zenith',
+    'Atma',
+    'Animus',
+    'Novus',
+    'Nexus',
+    'Braves',
+    'Zeta'
+  ];
+
+  static Map zodiacLinks = {
+    'zodiac': 'https://ffxiv.consolegameswiki.com/wiki/Zodiac_Weapons/Quest',
+    'zenith':
+        'https://ffxiv.consolegameswiki.com/wiki/Zenith_Zodiac_Weapons/Quest',
+    'atma': 'https://ffxiv.consolegameswiki.com/wiki/Atma_Zodiac_Weapons/Quest',
+    'animus':
+        'https://ffxiv.consolegameswiki.com/wiki/Animus_Zodiac_Weapons/Quest',
+    'novus':
+        'https://ffxiv.consolegameswiki.com/wiki/Novus_Zodiac_Weapons/Quest',
+    'nexus':
+        'https://ffxiv.consolegameswiki.com/wiki/Nexus_Zodiac_Weapons/Quest',
+    'braves':
+        'https://ffxiv.consolegameswiki.com/wiki/Zodiac_Braves_Weapons/Quest',
+    'zeta': 'https://ffxiv.consolegameswiki.com/wiki/Zodiac_Zeta_Weapons/Quest'
+  };
+}
+
 class ZenithCal {
   static int mistForEach = 3;
 
