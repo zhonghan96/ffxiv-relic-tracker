@@ -8,7 +8,7 @@ class AnimaInfo {
     'Hyperconductive',
     'Reconditioned',
     'Sharpened',
-    'Completed',
+    'Complete',
     'Lux'
   ];
 
@@ -23,7 +23,7 @@ class AnimaInfo {
         'https://ffxiv.consolegameswiki.com/wiki/Reconditioned_Anima_Weapons/Quest',
     'sharpened':
         'https://ffxiv.consolegameswiki.com/wiki/Sharpened_Anima_Weapons/Quest',
-    'completed':
+    'complete':
         'https://ffxiv.consolegameswiki.com/wiki/Complete_Anima_Weapons/Quest',
     'lux': 'https://ffxiv.consolegameswiki.com/wiki/Lux_Anima_Weapons/Quest'
   };
@@ -135,7 +135,7 @@ class SharpenedCal {
 class CompleteCal {
   static int itemsForEach = 15;
 
-  calClusters() {
+  calPneumite() {
     return AnimaInfo().calNeededBase(itemsForEach, 6) -
         SavedData.animaData['complete']['pneumite'];
   }
@@ -144,7 +144,7 @@ class CompleteCal {
 class LuxCal {
   static int itemsForEach = 1;
 
-  calClusters() {
+  calInk() {
     return AnimaInfo().calNeededBase(itemsForEach, 7) -
         SavedData.animaData['lux']['ink'];
   }

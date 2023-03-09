@@ -92,6 +92,11 @@ class SavedData {
         'sch': List.filled(6, false),
         'ast': List.filled(6, false),
       },
+      'anemos': {'proteanCrystal': 0, 'pazuzusFeather': 0},
+      'elemental': {'frostedCrystal': 0, 'pagosCrystal': 0, 'louhisIce': 0},
+      'pyros': {'pyrosCrystal': 0, 'penthesileasFlame': 0},
+      'eureka': {'hydatosCrystal': 0, 'crystalineScale': 0},
+      'physeos': {'eurekaFragment': 0}
     },
     'resistance': {
       'summary': {

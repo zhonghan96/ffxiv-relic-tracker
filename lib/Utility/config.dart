@@ -66,15 +66,6 @@ class StaticLists {
     'SGE'
   ];
 
-  static List eurekanSteps = [
-    'Antiquated',
-    'Anemos',
-    'Elemental',
-    'Pyros',
-    'Eureka',
-    'Physeos'
-  ];
-
   static List resistanceSteps = [
     'Resistance',
     'Augmented V1',

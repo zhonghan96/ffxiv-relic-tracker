@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '/Utility/config.dart';
 import '/Utility/zodiac_helper.dart';
 import '/Utility/anima_helper.dart';
+import '/Utility/eurekan_helper.dart';
 
 class SummaryPage extends StatelessWidget {
   const SummaryPage({super.key});
@@ -294,7 +295,7 @@ cardTable(relicCategory) {
                                   TableCellVerticalAlignment.middle,
                               children: [
                                 TableRow(
-                                    children: StaticLists.eurekanSteps
+                                    children: EurekanInfo.eurekanSteps
                                         .map((e) => Padding(
                                               padding:
                                                   const EdgeInsets.symmetric(

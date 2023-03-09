@@ -105,6 +105,27 @@ flutter:
     - assets/images/Fast-drying_carboncoat_icon1.png
     - assets/images/Kingcake_icon1.png
     - assets/images/Titanium_alloy_mirror_icon1.png
+    - assets/images/40px-Company_Seal.png
+    - assets/images/Aether_oil_icon1.png
+    - assets/images/Crystal_sand_icon1.png
+    - assets/images/Umbrite_icon1.png
+    - assets/images/Blue_crafters_scrip_token_icon1.png
+    - assets/images/Blue_gatherers_scrip_token_icon1.png
+    - assets/images/40px-Singing_cluster_icon1.png
+    - assets/images/Pneumite_icon1.png
+    - assets/images/Newborn_soulstone_icon1.png
+    - assets/images/Archaic_enchanted_ink_icon1.png
+    - assets/images/20px-Gil.png
+    - assets/images/40px-Eureka_fragment_icon1.png
+    - assets/images/Crystalline_scale_icon1.png
+    - assets/images/Frosted_protean_crystal_icon1.png
+    - assets/images/Hydatos_crystal_icon1.png
+    - assets/images/Louhis_ice_icon1.png
+    - assets/images/Pagos_crystal_icon1.png
+    - assets/images/Pazuzus_feather_icon1.png
+    - assets/images/Penthesileas_flame_icon1.png
+    - assets/images/Protean_crystal_icon1.png
+    - assets/images/Pyros_crystal_icon1.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
