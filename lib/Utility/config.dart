@@ -65,15 +65,4 @@ class StaticLists {
     'AST',
     'SGE'
   ];
-
-  static List resistanceSteps = [
-    'Resistance',
-    'Augmented V1',
-    'Recollection',
-    "Law's Order",
-    "Augmented V2",
-    'Blades'
-  ];
-
-  static List mandervilleSteps = ['Manderville'];
 }

@@ -5,6 +5,8 @@ import '/Utility/config.dart';
 import '/Utility/zodiac_helper.dart';
 import '/Utility/anima_helper.dart';
 import '/Utility/eurekan_helper.dart';
+import '/Utility/resistance_helper.dart';
+import '/Utility/manderville_helper.dart';
 
 class SummaryPage extends StatelessWidget {
   const SummaryPage({super.key});
@@ -327,7 +329,7 @@ cardTable(relicCategory) {
                                       TableCellVerticalAlignment.middle,
                                   children: [
                                     TableRow(
-                                        children: StaticLists.resistanceSteps
+                                        children: ResistanceInfo.resistanceSteps
                                             .map((e) => Padding(
                                                   padding: const EdgeInsets
                                                       .symmetric(horizontal: 5),
@@ -358,7 +360,7 @@ cardTable(relicCategory) {
                                           TableCellVerticalAlignment.middle,
                                       children: [
                                         TableRow(
-                                            children: StaticLists
+                                            children: MandervilleInfo
                                                 .mandervilleSteps
                                                 .map((e) => Padding(
                                                       padding: const EdgeInsets

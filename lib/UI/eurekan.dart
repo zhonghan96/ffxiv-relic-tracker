@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:extended_text/extended_text.dart';
@@ -110,7 +109,90 @@ class AnemosStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
+      child: Card(
+        elevation: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: ExpansionTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Anemos Weapon',
+                  style: TextFormating.widgetHeader,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.help),
+                  iconSize: 15,
+                  alignment: Alignment.topLeft,
+                  onPressed: () {
+                    launchUrl(Uri.parse(EurekanInfo.eurekanLinks['anemos']));
+                  },
+                )
+              ],
+            ),
+            textColor: ColorPallete.color3,
+            iconColor: ColorPallete.color3,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text.rich(TextSpan(children: [
+                        TextSpan(
+                          text:
+                              'Upgraded from an Antiquated Weapon with 1,300 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/Protean_crystal_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: ' Protean Crystals',
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        TextSpan(
+                          text: ' and 3 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/Pazuzus_feather_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: " Pazuzu's Feathers",
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ])),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                            'Note: Tap on the resource for more information',
+                            style: TextFormating.widgetSubcontent),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: AnemosTable(),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -122,9 +204,205 @@ class AnemosTable extends StatefulWidget {
 }
 
 class _AnemosTableState extends State<AnemosTable> {
+  ProteanCrystalNotifier proteanCrystalNotifier = ProteanCrystalNotifier();
+  PazuzusFeatherNotifier pazuzusFeatherNotifier = PazuzusFeatherNotifier();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Table(
+      defaultColumnWidth: const IntrinsicColumnWidth(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      children: [
+        TableRow(
+            children: StaticLists.tableHeaders
+                .map((e) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Text(
+                        e,
+                        textAlign: TextAlign.center,
+                        style: TextFormating.widgetContent.copyWith(
+                            color: ColorPallete.color3,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ))
+                .toList()),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Exchanged from Gerolt with ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset('assets/images/Anemos_crystal_icon1.png').image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Anemos Crystals',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' obtained from killing ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Notorious Monsters',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' in Eureka Anemos',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Protean_crystal_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(AnemosCal.proteanCrystalForEach, 1)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['anemos']['proteanCrystal'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['anemos']['proteanCrystal'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                proteanCrystalNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: proteanCrystalNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  AnemosCal().calProteanCrystal().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Sources:\n',
+                style: TextFormating.widgetContent,
+              ),
+              TextSpan(
+                text: '- 3 from killing Pazuzu in ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Wail in the Willows\n',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: '- Purchased from Expedition Birdwatcher for 300 ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset('assets/images/Protean_crystal_icon1.png').image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Protean Crystals',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' each',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Pazuzus_feather_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(AnemosCal.pazuzusFeatherForEach, 1)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['anemos']['pazuzusFeather'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['anemos']['pazuzusFeather'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                pazuzusFeatherNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: pazuzusFeatherNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  AnemosCal().calPazuzusFeather().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+      ],
+    );
   }
 }
 
@@ -140,7 +418,103 @@ class ElementalStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
+      child: Card(
+        elevation: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: ExpansionTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Elemental Weapon',
+                  style: TextFormating.widgetHeader,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.help),
+                  iconSize: 15,
+                  alignment: Alignment.topLeft,
+                  onPressed: () {
+                    launchUrl(Uri.parse(EurekanInfo.eurekanLinks['elemental']));
+                  },
+                )
+              ],
+            ),
+            textColor: ColorPallete.color3,
+            iconColor: ColorPallete.color3,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text.rich(TextSpan(children: [
+                        TextSpan(
+                          text: 'Upgraded from an Anemos Weapon with 31 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/Frosted_protean_crystal_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: ' Frosted Protean Crystals',
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        TextSpan(
+                          text: ', 500 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset('assets/images/Pagos_crystal_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: " Pagos Crystals",
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        TextSpan(
+                          text: ' and 5 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset('assets/images/Louhis_ice_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: " Louhi's Ice",
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ])),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                            'Note: Tap on the resource for more information',
+                            style: TextFormating.widgetSubcontent),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: ElementalTable(),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -152,9 +526,266 @@ class ElementalTable extends StatefulWidget {
 }
 
 class _ElementalTableState extends State<ElementalTable> {
+  FrostedCrystalNotifier frostedCrystalNotifier = FrostedCrystalNotifier();
+  PagosCrystalNotifier pagosCrystalNotifier = PagosCrystalNotifier();
+  LouhisIceNotifier louhisIceNotifier = LouhisIceNotifier();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Table(
+      defaultColumnWidth: const IntrinsicColumnWidth(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      children: [
+        TableRow(
+            children: StaticLists.tableHeaders
+                .map((e) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Text(
+                        e,
+                        textAlign: TextAlign.center,
+                        style: TextFormating.widgetContent.copyWith(
+                            color: ColorPallete.color3,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ))
+                .toList()),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Collect vitiated aether by killing ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Notorious Monsters',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text:
+                    ' in Eureka Pagos and turn it in at the Crystal Forge (6.0, 21.5)',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Frosted_protean_crystal_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(ElementalCal.frostedCrystalForEach, 2)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.eurekanData['elemental']['frostedCrystal']
+                  .toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['elemental']['frostedCrystal'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                frostedCrystalNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: frostedCrystalNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  ElementalCal().calFrostedCrystal().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Acquired by killing ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Notorious Monsters',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' in Eureka Pagos',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Pagos_crystal_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(ElementalCal.pagosCrystalForEach, 2)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['elemental']['pagosCrystal'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['elemental']['pagosCrystal'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                pagosCrystalNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: pagosCrystalNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  ElementalCal().calPagosCrystal().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Sources:\n',
+                style: TextFormating.widgetContent,
+              ),
+              TextSpan(
+                text: '- 2 from killing Louhi in ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Louhi on Ice\n',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: '- Purchased from Expedition Birdwatcher for 50 ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset('assets/images/Pagos_crystal_icon1.png').image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Pagos Crystals',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' each',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Louhis_ice_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(ElementalCal.louhisIceForEach, 2)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['elemental']['louhisIce'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['elemental']['louhisIce'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                louhisIceNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: louhisIceNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  ElementalCal().calLouhisIce().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+      ],
+    );
   }
 }
 
@@ -172,7 +803,88 @@ class PyrosStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
+      child: Card(
+        elevation: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: ExpansionTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Pyros Weapon',
+                  style: TextFormating.widgetHeader,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.help),
+                  iconSize: 15,
+                  alignment: Alignment.topLeft,
+                  onPressed: () {
+                    launchUrl(Uri.parse(EurekanInfo.eurekanLinks['pyros']));
+                  },
+                )
+              ],
+            ),
+            textColor: ColorPallete.color3,
+            iconColor: ColorPallete.color3,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text.rich(TextSpan(children: [
+                        TextSpan(
+                          text: 'Upgraded from an Elemental Weapon with 650 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset('assets/images/Pyros_crystal_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: ' Pyros Crystals',
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        TextSpan(
+                          text: ' and 5 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/Penthesileas_flame_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: " Penthesilea's Flame",
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ])),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                            'Note: Tap on the resource for more information',
+                            style: TextFormating.widgetSubcontent),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: PyrosTable(),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -184,9 +896,193 @@ class PyrosTable extends StatefulWidget {
 }
 
 class _PyrosTableState extends State<PyrosTable> {
+  PyrosCrystalNotifier pyrosCrystalNotifier = PyrosCrystalNotifier();
+  PenthesileasFlameNotifier penthesileasFlameNotifier =
+      PenthesileasFlameNotifier();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Table(
+      defaultColumnWidth: const IntrinsicColumnWidth(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      children: [
+        TableRow(
+            children: StaticLists.tableHeaders
+                .map((e) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Text(
+                        e,
+                        textAlign: TextAlign.center,
+                        style: TextFormating.widgetContent.copyWith(
+                            color: ColorPallete.color3,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ))
+                .toList()),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Acquired by killing ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Notorious Monsters',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' in Eureka Pyros',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Pyros_crystal_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(PyrosCal.pyrosCrystalForEach, 3)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['pyros']['pyrosCrystal'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['pyros']['pyrosCrystal'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                pyrosCrystalNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: pyrosCrystalNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  PyrosCal().calPyrosCrystal().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Sources:\n',
+                style: TextFormating.widgetContent,
+              ),
+              TextSpan(
+                text: '- 3 from killing Penthesilea in ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Lost Epic\n',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: '- Purchased from Expedition Birdwatcher for 50 ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset('assets/images/Pyros_crystal_icon1.png').image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Pyros Crystals',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' each',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Penthesileas_flame_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(PyrosCal.penthesileasFlameForEach, 3)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue: SavedData.eurekanData['pyros']['penthesileasFlame']
+                  .toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['pyros']['penthesileasFlame'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                penthesileasFlameNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: penthesileasFlameNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  PyrosCal().calPenthesileasFlame().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+      ],
+    );
   }
 }
 
@@ -202,7 +1098,89 @@ class EurekaStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
+      child: Card(
+        elevation: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: ExpansionTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Eureka Weapon',
+                  style: TextFormating.widgetHeader,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.help),
+                  iconSize: 15,
+                  alignment: Alignment.topLeft,
+                  onPressed: () {
+                    launchUrl(Uri.parse(EurekanInfo.eurekanLinks['eureka']));
+                  },
+                )
+              ],
+            ),
+            textColor: ColorPallete.color3,
+            iconColor: ColorPallete.color3,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text.rich(TextSpan(children: [
+                        TextSpan(
+                          text: 'Upgraded from a Pyros Weapon with 350 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/Hydatos_crystal_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: ' Hydatos Crystals',
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        TextSpan(
+                          text: ' and 5 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/Crystalline_scale_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: ' Crystalline Scales',
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ])),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                            'Note: Tap on the resource for more information',
+                            style: TextFormating.widgetSubcontent),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: EurekaTable(),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -214,9 +1192,171 @@ class EurekaTable extends StatefulWidget {
 }
 
 class _EurekaTableState extends State<EurekaTable> {
+  HydatosCrystalNotifier hydatosCrystalNotifier = HydatosCrystalNotifier();
+  CrystalineScaleNotifier crystalineScaleNotifier = CrystalineScaleNotifier();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Table(
+      defaultColumnWidth: const IntrinsicColumnWidth(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      children: [
+        TableRow(
+            children: StaticLists.tableHeaders
+                .map((e) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Text(
+                        e,
+                        textAlign: TextAlign.center,
+                        style: TextFormating.widgetContent.copyWith(
+                            color: ColorPallete.color3,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ))
+                .toList()),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Acquired by killing ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Notorious Monsters',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' in Eureka Hydatos',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Hydatos_crystal_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(EurekaCal.hydatosCrystalForEach, 4)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['eureka']['hydatosCrystal'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['eureka']['hydatosCrystal'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                hydatosCrystalNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: hydatosCrystalNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  EurekaCal().calHydatosCrystal().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: '3 will drop from killing Provenance Watcher in ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(
+                  Image.asset(
+                          'assets/images/Eureka_notorious_monster_(map_icon).png')
+                      .image,
+                  imageWidth: 20,
+                  imageHeight: 20),
+              TextSpan(
+                text: ' Crystalline Provenance',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/Crystalline_scale_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(EurekaCal.crystalineScaleForEach, 4)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['eureka']['crystalineScale'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['eureka']['crystalineScale'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                crystalineScaleNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: crystalineScaleNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  EurekaCal().calCrystalineScale().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+      ],
+    );
   }
 }
 
@@ -234,7 +1374,73 @@ class PhyseosStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
+      child: Card(
+        elevation: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: ExpansionTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Physeos Weapon',
+                  style: TextFormating.widgetHeader,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.help),
+                  iconSize: 15,
+                  alignment: Alignment.topLeft,
+                  onPressed: () {
+                    launchUrl(Uri.parse(EurekanInfo.eurekanLinks['physeos']));
+                  },
+                )
+              ],
+            ),
+            textColor: ColorPallete.color3,
+            iconColor: ColorPallete.color3,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text.rich(TextSpan(children: [
+                        TextSpan(
+                          text: 'Upgraded from an Eureka Weapon with 100 ',
+                          style: TextFormating.widgetContent,
+                        ),
+                        ImageSpan(
+                            Image.asset(
+                                    'assets/images/40px-Eureka_fragment_icon1.png')
+                                .image,
+                            imageWidth: 20,
+                            imageHeight: 20),
+                        TextSpan(
+                          text: ' Eureka Fragments',
+                          style: TextFormating.widgetContent.copyWith(
+                              color: ColorPallete.color3,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ])),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                            'Note: Tap on the resource for more information',
+                            style: TextFormating.widgetSubcontent),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: PhyseosTable(),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -246,9 +1452,98 @@ class PhyseosTable extends StatefulWidget {
 }
 
 class _PhyseosTableState extends State<PhyseosTable> {
+  EurekaFragmentNotifier eurekaFragmentNotifier = EurekaFragmentNotifier();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Table(
+      defaultColumnWidth: const IntrinsicColumnWidth(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      children: [
+        TableRow(
+            children: StaticLists.tableHeaders
+                .map((e) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Text(
+                        e,
+                        textAlign: TextAlign.center,
+                        style: TextFormating.widgetContent.copyWith(
+                            color: ColorPallete.color3,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ))
+                .toList()),
+        TableRow(children: [
+          Tooltip(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            triggerMode: TooltipTriggerMode.tap,
+            showDuration: const Duration(seconds: 60),
+            richMessage: TextSpan(children: [
+              TextSpan(
+                text: 'Obtained exclusively within ',
+                style: TextFormating.widgetContent,
+              ),
+              ImageSpan(Image.asset('assets/images/Duty.png').image,
+                  imageWidth: 20, imageHeight: 20),
+              TextSpan(
+                text: ' The Baldesion Arsenal',
+                style: TextFormating.widgetContent
+                    .copyWith(fontWeight: FontWeight.w600),
+              ),
+              TextSpan(
+                text: ' up to a total of 28 fragments per complete clear',
+                style: TextFormating.widgetContent,
+              ),
+            ]),
+            child: Image.asset(
+              'assets/images/40px-Eureka_fragment_icon1.png',
+              height: 30,
+              width: 30,
+            ),
+          ),
+          Text(
+            EurekanInfo()
+                .calNeededBase(PhyseosCal.eurekaFragmentForEach, 5)
+                .toString(),
+            style: TextFormating.widgetContent,
+            textAlign: TextAlign.center,
+          ),
+          Container(
+            height: 35,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: TextFormField(
+              initialValue:
+                  SavedData.eurekanData['physeos']['eurekaFragment'].toString(),
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.zero),
+              keyboardType: TextInputType.number,
+              onChanged: (input) {
+                if (input == '') {
+                  input = '0';
+                }
+                SavedData.eurekanData['physeos']['eurekaFragment'] =
+                    int.parse(input);
+                SavedData().updateLocalStorage();
+                eurekaFragmentNotifier.updateNotifierValue();
+              },
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: eurekaFragmentNotifier._notifier,
+              builder: (BuildContext context, value, Widget? child) {
+                return Text(
+                  PhyseosCal().calEurekaFragment().toString(),
+                  style: TextFormating.widgetContent,
+                  textAlign: TextAlign.center,
+                );
+              })
+        ]),
+      ],
+    );
   }
 }
 

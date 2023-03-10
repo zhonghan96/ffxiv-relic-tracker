@@ -94,12 +94,12 @@ class EurekaCal {
   static int crystalineScaleForEach = 5;
 
   calHydatosCrystal() {
-    return EurekanInfo().calNeededBase(hydatosCrystalForEach, 3) -
+    return EurekanInfo().calNeededBase(hydatosCrystalForEach, 4) -
         SavedData.eurekanData['eureka']['hydatosCrystal'];
   }
 
   calCrystalineScale() {
-    return EurekanInfo().calNeededBase(crystalineScaleForEach, 3) -
+    return EurekanInfo().calNeededBase(crystalineScaleForEach, 4) -
         SavedData.eurekanData['eureka']['crystalineScale'];
   }
 }
@@ -108,7 +108,7 @@ class PhyseosCal {
   static int eurekaFragmentForEach = 100;
 
   calEurekaFragment() {
-    return EurekanInfo().calNeededBase(eurekaFragmentForEach, 3) -
+    return EurekanInfo().calNeededBase(eurekaFragmentForEach, 5) -
         SavedData.eurekanData['physeos']['eurekaFragment'];
   }
 }

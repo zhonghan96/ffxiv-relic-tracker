@@ -126,6 +126,24 @@ flutter:
     - assets/images/Penthesileas_flame_icon1.png
     - assets/images/Protean_crystal_icon1.png
     - assets/images/Pyros_crystal_icon1.png
+    - assets/images/Eureka_notorious_monster_(map_icon).png
+    - assets/images/Anemos_crystal_icon1.png
+    - assets/images/Duty.png
+    - assets/images/Bitter_memory_of_the_dying_icon1.png
+    - assets/images/Harrowing_memory_of_the_dying_icon1.png
+    - assets/images/Loathsome_memory_of_the_dying_icon1.png
+    - assets/images/Raw_emotion_icon1.png
+    - assets/images/Sorrowful_memory_of_the_dying_icon1.png
+    - assets/images/Thavnairian_scalepowder_icon1.png
+    - assets/images/Timeworn_artifact_icon1.png
+    - assets/images/Tortured_memory_of_the_dying_icon1.png
+    - assets/images/Raid.png
+    - assets/images/40px-Critical_engagement_notorious_monster_(map_icon).png
+    - assets/images/Deep_Dungeon.png
+    - assets/images/25px-Dungeon.png
+    - assets/images/40px-Manderium_meteorite_icon1.png
+    - assets/images/40px-Complementary_chondrite_icon1.png
+    - assets/images/20px-Allagan_Tomestone_of_Astronomy.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
