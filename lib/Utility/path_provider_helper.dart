@@ -168,16 +168,6 @@ class SavedData {
     return file;
   }
 
-  initAllData() async {
-    // TODO: Remove once app is ready, not needed outside of testing
-    final file = await initLocalStorage();
-    zodiacData = json.decode(await file.readAsString())['zodiac'];
-    animaData = json.decode(await file.readAsString())['anima'];
-    eurekanData = json.decode(await file.readAsString())['eurekan'];
-    resistanceData = json.decode(await file.readAsString())['resistance'];
-    mandervilleData = json.decode(await file.readAsString())['manderville'];
-  }
-
   initZodiacData() async {
     final file = await initLocalStorage();
     zodiacData = json.decode(await file.readAsString())['zodiac'];

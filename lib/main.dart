@@ -8,7 +8,7 @@ import 'UI/resistance.dart';
 import 'UI/manderville.dart';
 
 import 'Utility/config.dart';
-import 'Utility/path_provider_helper.dart';
+// import 'Utility/path_provider_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SavedData().initAllData();
+    // Only needed during development & testing
+    // SavedData().initAllData();
 
     return MaterialApp(
       title: 'FFXIV Relic Weapon Tracker',
@@ -104,9 +105,10 @@ class HomePage extends StatelessWidget {
         ]),
       ),
       body: bodyDisplay(),
-      floatingActionButton: FloatingActionButton(onPressed: () async {
-        SavedData().updateBaseFile();
-      }),
+      // Button to update Local Save File with new Data Structure
+      // floatingActionButton: FloatingActionButton(onPressed: () async {
+      //   SavedData().updateBaseFile();
+      // }),
     );
   }
 }

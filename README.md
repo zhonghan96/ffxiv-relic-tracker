@@ -9,3 +9,7 @@ This app also contains succinct information on all Relic Weapon steps so players
 This app is merely a consolidation of information and materials from various sources into a comprehensive tool. I do not own any of the information nor artwork within the app, all credits go to their original creators and contributors.
 
 All information is obtained from `https://ffxiv.consolegameswiki.com/wiki`
+
+## Last Updated
+
+10/03/2022
