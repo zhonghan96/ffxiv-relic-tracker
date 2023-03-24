@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 
 class TextFormating {
   static TextStyle appBarText = const TextStyle(fontSize: 20);
+
   static TextStyle drawerHeader =
       const TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
-  static TextStyle drawerListItems = const TextStyle(fontSize: 16);
+  static TextStyle drawerListItemsHeader = const TextStyle(fontSize: 16);
+  static TextStyle drawerListItems = const TextStyle(fontSize: 14);
+  static TextStyle drawerFootnote = const TextStyle(fontSize: 10);
+
   static TextStyle widgetHeader =
       const TextStyle(fontSize: 18, fontWeight: FontWeight.w600);
   static TextStyle widgetContent = const TextStyle(fontSize: 14);
+  static TextStyle hyperlink =
+      const TextStyle(fontSize: 14, color: Colors.lightBlueAccent);
   static TextStyle widgetSubcontent =
       const TextStyle(fontSize: 12, fontStyle: FontStyle.italic);
 
-  static TextStyle hyperlink =
-      const TextStyle(fontSize: 14, color: Colors.lightBlueAccent);
+  static TextStyle acknowledgements =
+      const TextStyle(fontSize: 16);
 }
 
 class ColorPallete {
@@ -33,15 +39,6 @@ class ColorPallete {
 //   \_____|_|\__,_|___/___/ |_____|_| |_|_| \___/
 
 class StaticLists {
-  static List drawerItems = [
-    'Progress Summary',
-    'Zodiac Weapons',
-    'Anima Weapons',
-    'Eurekan Weapons',
-    'Resistance Weapons',
-    'Manderville Weapons',
-  ];
-
   static List tableHeaders = ['Resource', 'Needed', 'Inventory', 'Remaining'];
 
   static List classList = [

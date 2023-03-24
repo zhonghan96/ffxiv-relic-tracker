@@ -6,6 +6,7 @@ import 'UI/anima.dart';
 import 'UI/eurekan.dart';
 import 'UI/resistance.dart';
 import 'UI/manderville.dart';
+import 'UI/acknowledgements.dart';
 
 import 'Utility/config.dart';
 // import 'Utility/path_provider_helper.dart';
@@ -53,6 +54,8 @@ class HomePage extends StatelessWidget {
         return const ResistancePage();
       case 'Manderville Weapons':
         return const MandervillePage();
+      case 'Acknowledgements':
+        return const AcknowledgementPage();
     }
   }
 
@@ -78,30 +81,134 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 600.0,
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: StaticLists.drawerItems.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    StaticLists.drawerItems[index],
-                    style: TextFormating.drawerListItems,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            HomePage(pageTitle: StaticLists.drawerItems[index]),
+          SingleChildScrollView(
+            child: SizedBox(
+              height: 500,
+              child: Column(
+                children: [
+                  ExpansionTile(
+                    title: Text('Relic Weapons',
+                        style: TextFormating.drawerListItemsHeader),
+                    childrenPadding: const EdgeInsets.only(left: 10),
+                    children: [
+                      ListTile(
+                        title: Text(
+                          'Progress Summary',
+                          style: TextFormating.drawerListItems,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const HomePage(pageTitle: 'Progress Summary'),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                );
-              },
+                      ListTile(
+                        title: Text(
+                          'Zodiac Weapons',
+                          style: TextFormating.drawerListItems,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const HomePage(pageTitle: 'Zodiac Weapons'),
+                            ),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(
+                          'Anima Weapons',
+                          style: TextFormating.drawerListItems,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const HomePage(pageTitle: 'Anima Weapons'),
+                            ),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(
+                          'Eurekan Weapons',
+                          style: TextFormating.drawerListItems,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const HomePage(pageTitle: 'Eurekan Weapons'),
+                            ),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(
+                          'Resistance Weapons',
+                          style: TextFormating.drawerListItems,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(
+                                  pageTitle: 'Resistance Weapons'),
+                            ),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(
+                          'Manderville Weapons',
+                          style: TextFormating.drawerListItems,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(
+                                  pageTitle: 'Manderville Weapons'),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
+          ListTile(
+            title: Text(
+              'Acknowledgements',
+              style: TextFormating.drawerListItemsHeader,
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      const HomePage(pageTitle: 'Acknowledgements'),
+                ),
+              );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              '© SQUARE ENIX CO., LTD. All Rights Reserved.\nFINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. All material used under license.',
+              style: TextFormating.drawerFootnote,
+            ),
+          )
         ]),
       ),
       body: bodyDisplay(),
