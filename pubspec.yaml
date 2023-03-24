@@ -38,6 +38,23 @@ dependencies:
   path_provider: ^2.0.13
   url_launcher: ^6.1.10
   extended_text: ^10.0.1
+  flutter_launcher_icons: ^0.12.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/kisspng-final-fantasy-xiv-stormblood-final-fantasy-xv-fin-final-fantasy-5ac7e48f8150c0.1890065215230496155297.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/kisspng-final-fantasy-xiv-stormblood-final-fantasy-xv-fin-final-fantasy-5ac7e48f8150c0.1890065215230496155297.png"
+  windows:
+    generate: true
+    image_path: "assets/images/kisspng-final-fantasy-xiv-stormblood-final-fantasy-xv-fin-final-fantasy-5ac7e48f8150c0.1890065215230496155297.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/kisspng-final-fantasy-xiv-stormblood-final-fantasy-xv-fin-final-fantasy-5ac7e48f8150c0.1890065215230496155297.png"
 
 dev_dependencies:
   flutter_test:
@@ -144,6 +161,7 @@ flutter:
     - assets/images/40px-Manderium_meteorite_icon1.png
     - assets/images/40px-Complementary_chondrite_icon1.png
     - assets/images/20px-Allagan_Tomestone_of_Astronomy.png
+    - assets/images/kisspng-final-fantasy-xiv-stormblood-final-fantasy-xv-fin-final-fantasy-5ac7e48f8150c0.1890065215230496155297.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
